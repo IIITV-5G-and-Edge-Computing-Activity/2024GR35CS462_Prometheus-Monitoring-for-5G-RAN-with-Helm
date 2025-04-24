@@ -236,10 +236,9 @@ process_start_time_seconds 61727
 # TYPE process_open_fds gauge
 process_open_fds 23
 ```
-Here's the "Run Grafana" section in README.md format:
-
-```markdown
 ## Run Grafana
+```markdown
+
 
 I used the OSS version of Grafana.
 
