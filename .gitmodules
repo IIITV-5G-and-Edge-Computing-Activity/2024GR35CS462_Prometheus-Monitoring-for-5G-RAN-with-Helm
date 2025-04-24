@@ -1,0 +1,12 @@
+[submodule "open5gs"]
+    path = open5gs
+    url = https://github.com/open5gs/open5gs.git
+[submodule "ueransim"]
+    path = ueransim
+    url = https://github.com/aligungr/UERANSIM.git
+[submodule "prometheus"]
+    path = prometheus
+    url = https://github.com/prometheus/prometheus.git
+[submodule "grafana"]
+    path = grafana
+    url = https://github.com/grafana/grafana.git
