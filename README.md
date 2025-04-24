@@ -65,3 +65,238 @@ I will explain what to set additionally here. When monitoring the metrics with P
 metrics:
   - addr: 192.168.0.111
     port: 9090
+```
+Build Open5GS for using Prometheus
+Open5GS sets Prometheus metrics by default. Please refer to the following for building Open5GS.
+
+https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/
+
+Please install the following to run Prometheus on Docker.
+
+docker-ce
+
+Run Prometheus
+Please refer to the following for using Prometheus.
+
+https://open5gs.org/open5gs/docs/tutorial/04-metrics-prometheus/
+
+Web Access to Prometheus Dashboard
+First, create the following prometheus.yml.
+```yaml
+global:
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: open5gs-amfd
+    static_configs:
+      - targets: ["192.168.0.111:9090"]
+  - job_name: open5gs-pcfd
+    static_configs:
+      - targets: ["192.168.0.111:9091"]
+  - job_name: open5gs-smfd1
+    static_configs:
+      - targets: ["192.168.0.112:9090"]
+  - job_name: open5gs-smfd2
+    static_configs:
+      - targets: ["192.168.0.113:9090"]
+  - job_name: open5gs-upfd1
+    static_configs:
+      - targets: ["192.168.0.114:9090"]
+  - job_name: open5gs-upfd2
+    static_configs:
+      - targets: ["192.168.0.115:9090"]
+```
+After starting Open5GS, run Prometheus as follows.
+```yaml
+    docker run -d -p 9090:9090 -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+```
+You can access the following URL with web browser.
+
+
+The list of targets is as follows.
+
+Prometheus Targets
+![WhatsApp Image 2025-04-23 at 23 26 16_1d53e4d0](https://github.com/user-attachments/assets/5330c80d-4c47-43d1-8e70-2aacc729baaf)
+
+
+Metrics of Open5GS AMF
+Following the Endpoint link of job_name=open5gs-amfd, the metrics will be displayed as follows.
+```yaml
+# HELP gnb gNodeBs
+# TYPE gnb gauge
+gnb 0
+
+# HELP fivegs_amffunction_mm_confupdate Number of UE Configuration Update commands requested by the AMF
+# TYPE fivegs_amffunction_mm_confupdate counter
+fivegs_amffunction_mm_confupdate 0
+
+# HELP fivegs_amffunction_rm_reginitreq Number of initial registration requests received by the AMF
+# TYPE fivegs_amffunction_rm_reginitreq counter
+fivegs_amffunction_rm_reginitreq 0
+
+# HELP fivegs_amffunction_rm_regemergreq Number of emergency registration requests received by the AMF
+# TYPE fivegs_amffunction_rm_regemergreq counter
+fivegs_amffunction_rm_regemergreq 0
+
+# HELP fivegs_amffunction_mm_paging5greq Number of 5G paging procedures initiated at the AMF
+# TYPE fivegs_amffunction_mm_paging5greq counter
+fivegs_amffunction_mm_paging5greq 0
+
+# HELP fivegs_amffunction_rm_regperiodreq Number of periodic registration update requests received by the AMF
+# TYPE fivegs_amffunction_rm_regperiodreq counter
+fivegs_amffunction_rm_regperiodreq 0
+
+# HELP fivegs_amffunction_mm_confupdatesucc Number of UE Configuration Update complete messages received by the AMF
+# TYPE fivegs_amffunction_mm_confupdatesucc counter
+fivegs_amffunction_mm_confupdatesucc 0
+
+# HELP fivegs_amffunction_rm_reginitsucc Number of successful initial registrations at the AMF
+# TYPE fivegs_amffunction_rm_reginitsucc counter
+fivegs_amffunction_rm_reginitsucc 0
+
+# HELP fivegs_amffunction_amf_authreject Number of authentication rejections sent by the AMF
+# TYPE fivegs_amffunction_amf_authreject counter
+fivegs_amffunction_amf_authreject 0
+
+# HELP fivegs_amffunction_rm_regmobreq Number of mobility registration update requests received by the AMF
+# TYPE fivegs_amffunction_rm_regmobreq counter
+fivegs_amffunction_rm_regmobreq 0
+
+# HELP amf_session AMF Sessions
+# TYPE amf_session gauge
+amf_session 0
+
+# HELP fivegs_amffunction_rm_regmobsucc Number of successful mobility registration updates at the AMF
+# TYPE fivegs_amffunction_rm_regmobsucc counter
+fivegs_amffunction_rm_regmobsucc 0
+
+# HELP fivegs_amffunction_amf_authreq Number of authentication requests sent by the AMF
+# TYPE fivegs_amffunction_amf_authreq counter
+fivegs_amffunction_amf_authreq 0
+
+# HELP fivegs_amffunction_rm_regemergsucc Number of successful emergency registrations at the AMF
+# TYPE fivegs_amffunction_rm_regemergsucc counter
+fivegs_amffunction_rm_regemergsucc 0
+
+# HELP fivegs_amffunction_mm_paging5gsucc Number of successful 5G paging procedures initiated at the AMF
+# TYPE fivegs_amffunction_mm_paging5gsucc counter
+fivegs_amffunction_mm_paging5gsucc 0
+
+# HELP ran_ue RAN UEs
+# TYPE ran_ue gauge
+ran_ue 0
+
+# HELP fivegs_amffunction_rm_regperiodsucc Number of successful periodic registration update requests at the AMF
+# TYPE fivegs_amffunction_rm_regperiodsucc counter
+fivegs_amffunction_rm_regperiodsucc 0
+
+# HELP fivegs_amffunction_rm_registeredsubnbr Number of registered state subscribers per AMF
+# TYPE fivegs_amffunction_rm_registeredsubnbr gauge
+
+# HELP fivegs_amffunction_rm_reginitfail Number of failed initial registrations at the AMF
+# TYPE fivegs_amffunction_rm_reginitfail counter
+
+# HELP fivegs_amffunction_rm_regmobfail Number of failed mobility registration updates at the AMF
+# TYPE fivegs_amffunction_rm_regmobfail counter
+
+# HELP fivegs_amffunction_rm_regperiodfail Number of failed periodic registration update requests at the AMF
+# TYPE fivegs_amffunction_rm_regperiodfail counter
+
+# HELP fivegs_amffunction_rm_regemergfail Number of failed emergency registrations at the AMF
+# TYPE fivegs_amffunction_rm_regemergfail counter
+
+# HELP fivegs_amffunction_amf_authfail Number of authentication failure messages received by the AMF
+# TYPE fivegs_amffunction_amf_authfail counter
+
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1024
+
+# HELP process_virtual_memory_max_bytes Maximum amount of virtual memory available in bytes.
+# TYPE process_virtual_memory_max_bytes gauge
+process_virtual_memory_max_bytes -1
+
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total gauge
+process_cpu_seconds_total 0
+
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 159555584
+
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 17182720
+
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 61727
+
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 23
+```
+Here's the "Run Grafana" section in README.md format:
+
+```markdown
+## Run Grafana
+
+I used the OSS version of Grafana.
+
+## Web Access to Grafana Dashboard
+
+After starting Open5GS and Prometheus, run Grafana-OSS as follows:
+
+```bash
+docker run -d -p 3001:3000 grafana/grafana-oss
+```
+##RUN GRAFANA
+
+You can access the following URL with web browser. The default username and password are both `admin`.
+
+[http://192.168.0.111:3001/](http://192.168.0.111:3000/)
+
+## Prometheus data source
+
+The data source name, URL, and access mode are as follows. I used the defaults for other than these as is.
+
+| Name     | URL                      |
+|----------|--------------------------|
+| Open5GS  | http://192.168.0.111:9092/ |
+
+Grafana Data Source
+![image](https://github.com/user-attachments/assets/e7e61fc7-e411-4b7c-8441-0b3bcca68588)
+
+## Example of setting visualization of metrics
+
+1. Create your first dashboard
+2. Add a panel for each metric you want to visualize
+3. In the Metrics browser:
+   - Select the job and its metrics from the available `job_names`
+   - Set panel properties
+   - Add panels
+   - Create the dashboard
+
+The following is a simple example of setting the panel for the AMF metric `amf_session`:
+
+#Grafana Metric Visualization
+![image](https://github.com/user-attachments/assets/89ec487a-c441-4934-8f08-9c965a044328)
+
+
+Grafana allows you to freely design user-friendly dashboards by:
+- Creating attractive panels for each metric
+- Combining them in meaningful layouts
+- Customizing visualizations to suit your monitoring needs
+```
+
+This section maintains all the key information from your original text while formatting it properly for README.md with:
+
+1. Clear section headings
+2. Proper code block formatting for commands
+3. Table formatting for the data source information
+4. Image references with descriptive alt text
+5. Bullet points for the visualization steps
+6. Proper URL linking
+7. Consistent spacing and formatting throughout
+
+The section flows naturally from installation to configuration to usage examples, making it easy for readers to follow along with setting up Grafana monitoring for their Open5GS deployment.
