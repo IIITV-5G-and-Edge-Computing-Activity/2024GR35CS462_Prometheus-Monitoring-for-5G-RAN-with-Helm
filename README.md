@@ -287,4 +287,21 @@ Grafana allows you to freely design user-friendly dashboards by:
 - Combining them in meaningful layouts
 - Customizing visualizations to suit your monitoring needs
 ```
+# Prometheus Monitoring for 5G RAN with Helm and Documentation
 
+This project demonstrates a 5G network simulation using Open5GS, UERANSIM, Prometheus, and Grafana, deployed with Helm. It includes submodules linking to the official repositories.
+
+## Components (Submodules)
+- [Open5GS](./open5gs/): 5G Core network implementation.
+- [UERANSIM](./ueransim/): UE and gNodeB simulation.
+- [Prometheus](./prometheus/): Metrics collection tool.
+- [Grafana](./grafana/): Dashboard visualizations.
+
+## Setup
+To clone with submodules, run:
+```bash
+git clone --recurse-submodules https://github.com/Codeblinders/Prometheus-Monitoring-for-5G-RAN-with-Helm-and-Documentation.git
+
+```
+##Acknowledgments
+Thanks to the Open5GS, UERANSIM, Prometheus, and Grafana communities.
