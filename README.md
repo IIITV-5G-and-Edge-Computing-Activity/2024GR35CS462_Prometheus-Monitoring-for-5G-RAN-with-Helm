@@ -288,14 +288,3 @@ Grafana allows you to freely design user-friendly dashboards by:
 - Customizing visualizations to suit your monitoring needs
 ```
 
-This section maintains all the key information from your original text while formatting it properly for README.md with:
-
-1. Clear section headings
-2. Proper code block formatting for commands
-3. Table formatting for the data source information
-4. Image references with descriptive alt text
-5. Bullet points for the visualization steps
-6. Proper URL linking
-7. Consistent spacing and formatting throughout
-
-The section flows naturally from installation to configuration to usage examples, making it easy for readers to follow along with setting up Grafana monitoring for their Open5GS deployment.
