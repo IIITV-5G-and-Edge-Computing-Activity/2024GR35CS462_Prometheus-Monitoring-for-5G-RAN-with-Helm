@@ -25,7 +25,8 @@ This is an additional setting example when monitoring the metrics with Prometheu
 
 This example configuration for monitoring metrics with Prometheus is shown in the figure below. NFs without metrics are not drawn in the figure.
 
-![Network Overview](./images/network-overview.png)
+![Network Overview(![image](https://github.com/user-attachments/assets/6707a267-12f2-4414-9435-0d57ce41e32a)
+)
 
 The 5GC / UE / RAN used are as follows. Also, I started Prometheus and Grafana using Docker.
 
