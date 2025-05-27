@@ -1,6 +1,6 @@
 # Prometheus-Monitoring-for-5G-RAN-with-Helm-and-Documentation
 Use Helm to deploy a 5G RAN simulator and Prometheus sidecar for  metrics scraping. Write a comprehensive technical paper describing  the deployment steps, key metrics tracked, and how the monitored  data can guide network optimization.
-
+here is the Video explanation  : https://drive.google.com/drive/folders/1OrqB0mQlGUVA3vihoBQgrIr60_N8JnG7
 ## Table of Contents
 - [Overview of Open5GS 5GC Simulation Mobile Network](#overview-of-open5gs-5gc-simulation-mobile-network)
 - [Additional changes in configuration files](#additional-changes-in-configuration-files-of-open5gs-5gc-c-plane-and-u-plane)
